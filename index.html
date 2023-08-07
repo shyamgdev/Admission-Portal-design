@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admission Portal: Dashboard</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicons/favicon-16x16.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/customStyle.css" />
+</head>
+
+<body>
+  <!-- DASHBOARD PAGE -->
+  <section class="min-w-screen min-h-screen bg-primary">
+    <!-- DASHBOARD CONTAINER -->
+    <div class="w-full h-full">
+      <!-- HEADER -->
+      <header class="sticky top-0 w-full h-fit bg-primary shadow-2xl z-10">
+        <!-- HEADER CONTAINER -->
+        <div class="w-full h-full px-4 py-2 flex flex-row flex-wrap items-center justify-between">
+          <!-- HEADER LEFT -->
+          <div class="h-12 cursor-pointer overflow-hidden" title="Logo">
+            <!-- LOGO -->
+            <a href="#">
+              <img src="./img/logo.png" alt="Collage Logo" />
+            </a>
+          </div>
+          <!-- HEADER CENTER -->
+          <div class="hidden w-full h-fit mt-2 font-medium order-3 md:block md:w-fit md:mt-0 md:order-2"
+            id="toggle-mobile-menu">
+            <nav class="w-full h-full">
+              <ul class="w-full h-full flex flex-col md:flex-row md:gap-4 items-center">
+                <a href="/" class="w-full p-2 border-b border-gray-100 bg-blue-700 hover:bg-blue-800 cursor-pointer md:w-fit md:px-4 md:border-0 md:text-blue-700 md:bg-transparent md:hover:bg-transparent text-white rounded" onclick="toggleMobileMenuBtn()">
+                  <li>Home</li>
+                </a>
+                <a class="p-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 md:hover:bg-transparent cursor-pointer w-full border-b border-gray-100 rounded md:w-fit md:px-4 md:border-0" href="#courses" onclick="toggleMobileMenuBtn()">
+                  <li>Courses</li>
+                </a>
+                <a class="p-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 md:hover:bg-transparent cursor-pointer w-full border-b border-gray-100 rounded md:w-fit md:px-4 md:border-0" href="#about" onclick="toggleMobileMenuBtn()">
+                  <li>About Us</li>
+                </a>
+                <a class="p-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 md:hover:bg-transparent cursor-pointer w-full border-b border-gray-100 rounded md:w-fit md:px-4 md:border-0" href="#contact" onclick="toggleMobileMenuBtn()">
+                  <li>Contact Us</li>
+                </a>
+                <a class="p-2 text-gray-700 hover:text-blue-700 hover:bg-gray-50 md:hover:bg-transparent cursor-pointer w-full border-b border-gray-100 rounded md:w-fit md:px-4 md:border-0" href="./login.html">
+                  <li>Logout</li>
+                </a>
+              </ul>
+            </nav>
+          </div>
+          <!-- HEADER RIGHT -->
+          <div class="w-fit h-12 flex flex-row items-center justify-center gap-4 order-2 md:order-3">
+            <!-- USER PROFILE IMAGE -->
+            <a href="profile.html" class="h-full rounded-full ring-2 p-1 overflow-hidden cursor-pointer"
+              title="Prashant Gupta">
+              <img class="rounded-full" src="./img/profile.jpg" alt="profile" />
+            </a>
+            <!-- TOGGLE BUTTON FOR MOBILE TO TOGGLE NAV LINKS -->
+            <div class="humburger cursor-pointer md:hidden" onclick="toggleMobileMenuBtn()" title="Menu">
+              <!-- ICON TO OPEN MENU -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 open">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <!-- ICON TO CLOSE MENU -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6 hidden close">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- CAROUSEL -->
+      <div class="w-full h-full relative">
+        <!-- CAROUSEL PREVIOUS BUTTON -->
+        <button class="h-full px-4 absolute left-0 top-0 bottom-0 active:bg-white/60 pointer-fine:bg-white/60"
+          onclick="prevSlide()" title="Previous Slide">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-8 h-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <!-- CAROUSEL NEXT BUTTON -->
+        <button class="h-full px-4 absolute right-0 top-0 bottom-0 active:bg-white/60 pointer-fine:bg-white/60"
+          onclick="nextSlide()" title="Next Slide">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-8 h-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+        <!-- CAROUSEL CONTAINER -->
+        <div class="slider w-full h-full flex flex-row">
+          <!-- FIRST SLIDE -->
+          <img class="slide" src="./img/hero/01.jpg" alt="" />
+          <!-- SECOND SLIDE -->
+          <img class="slide hidden" src="./img/hero/02.jpg" alt="" />
+          <!-- THIRD SLIDE -->
+          <img class="slide hidden" src="./img/hero/03.jpg" alt="" />
+          <!-- FOURTH SLIDE -->
+          <img class="slide hidden" src="./img/hero/04.jpg" alt="" />
+        </div>
+      </div>
+      <!-- MAIN -->
+      <main class="w-full h-full px-4 pb-8">
+        <!-- COURSES -->
+        <div class="w-full pt-12 space-y-8" id="courses">
+          <!-- COURSES TITLE & DESCRIPTION -->
+          <div class="flex flex-col items-center justify-center text-center gap-4">
+            <h1 class="font-bold text-3xl text-blue-700">Courses</h1>
+            <p class="font-semibold md:text-xl line-clamp-4">
+              Course Registration means the official recording of a student's
+              name to study a course or courses.
+            </p>
+          </div>
+          <!-- COURSES CONTAINER -->
+          <div class="w-full h-full flex flex-row items-center justify-center flex-wrap gap-4">
+            <!-- B.Tech CARD -->
+            <div class="card">
+              <!-- CARD TOP -->
+              <div class="h-1/2 overflow-hidden">
+                <img src="./img/courses/B-Teck.jpg" alt="B.Tech" />
+              </div>
+              <!-- CARD BOTTOM -->
+              <div class="w-full h-1/2 flex flex-col items-center justify-between gap-4">
+                <h1 class="text-xl font-semibold pt-2 line-clamp-2">
+                  Bachelor of Technology (B.Tech)
+                </h1>
+                <p class="line-clamp-2">
+                  B.Tech is a professional undergraduate engineering degree.
+                </p>
+                <button class="bg-blue-700 hover:bg-blue-800 px-4 py-2 text-xl text-white rounded-lg"
+                  onclick="openCourseRegistrationModal('B.Tech')">
+                  Register
+                </button>
+              </div>
+            </div>
+            <!-- BCA CARD -->
+            <div class="card">
+              <!-- CARD TOP -->
+              <div class="h-1/2 overflow-hidden">
+                <img src="./img/courses/BCA.jpg" alt="B.Tech" />
+              </div>
+              <!-- CARD BOTTOM -->
+              <div class="w-full h-1/2 flex flex-col items-center justify-between gap-4">
+                <h1 class="text-xl font-semibold pt-2 line-clamp-2">
+                  Bachelor of Computer Science (BCA)
+                </h1>
+                <p class="line-clamp-2">
+                  BCA is a three-year Bachelor's Degree in Computer
+                  Application.
+                </p>
+                <button class="bg-blue-700 hover:bg-blue-800 px-4 py-2 text-xl text-white rounded-lg"
+                  onclick="openCourseRegistrationModal('BCA')">
+                  Register
+                </button>
+              </div>
+            </div>
+            <!-- MCA CARD -->
+            <div class="card">
+              <!-- CARD TOP -->
+              <div class="h-1/2 overflow-hidden">
+                <img src="./img/courses/MCA.jpg" alt="B.Tech" />
+              </div>
+              <!-- CARD BOTTOM -->
+              <div class="w-full h-1/2 flex flex-col items-center justify-between gap-4">
+                <h1 class="text-xl font-semibold pt-2 line-clamp-2">
+                  Master of Computer Application (MCA)
+                </h1>
+                <p class="line-clamp-2">
+                  MCA is a professional post-graduation degree in computer
+                  science.
+                </p>
+                <button class="bg-blue-700 hover:bg-blue-800 px-4 py-2 text-xl text-white rounded-lg"
+                  onclick="openCourseRegistrationModal('MCA')">
+                  Register
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ABOUT US -->
+        <div class="w-full pt-12" id="about">
+          <h1 class="font-bold text-3xl text-blue-700 text-center pb-4">About Us</h1>
+          <div class="w-full px-4 flex flex-col lg:flex-row items-center justify-center  space-x-4 space-y-4">
+            <!-- LEFT -->
+            <div class="md:w-full space-y-4">
+              <h3 class="font-medium text-xl">
+                <span class="text-blue-700">15+</span>
+                <span>Years of Experience</span>
+              </h3>
+              <p>The Vikrant Group of Institutions have embarked on a mission with zeal to imbibe a culture of providing
+                quality education to the learners, thereby leading the learners to the pinnacle of success. To achieve
+                this, abinito we have created a State of Art Infrastructure and indepth resources of through diehard
+                professionals in our team. Our all out endeavour is to groom young future leaders to be complete value
+                driven human beings and competent professionals with a deep passion for our country.
+                <br>
+                <br>
+                The biggest strength of our Institutes is the renowned faculty members having distinguished academic
+                achievements in different areas of technology, management and other related basic disciplines. The
+                endeavour is to have a progressive outlook and introduce innovative teaching-learning process.
+              </p>
+            </div>
+            <!-- RIGHT -->
+            <div class="m-auto">
+              <iframe class="w-full sm:w-[560px] sm:h-[315px]" src="https://www.youtube.com/embed/HpS7XsWZqdk"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <!-- CONTACT US -->
+        <div class="w-full pt-12" id="contact">
+          <h1 class="font-bold text-3xl text-blue-700 text-center pb-4">Contact Us</h1>
+          <div class="w-full flex flex-col lg:flex-row items-start justify-around px-4 space-y-4">
+            <!-- CONTACT DETAILS -->
+            <div class="space-y-4">
+              <h3 class="font-medium text-xl">Contact Details</h3>
+              <!-- TOP -->
+              <div>
+                <h4 class="font-medium text-xl text-blue-500">Principal</h4>
+                <p>
+                  Name : Prof. Anand Singh Bisen
+                  <br>
+                  Contact No. : +917773004155 | Toll Free : 1800-270-5155
+                  <br>
+                  Mail ID : <a target="_blank" href="mailto:principal@vitm.edu.in" class="hover:text-blue-500">principal@vitm.edu.in</a>
+                </p>
+              </div>
+              <!-- BOTTOM -->
+              <br>
+              <div>
+                <h4 class="font-medium text-xl text-blue-500">Chief Admission Co-ordinator</h4>
+                <p>
+                  Name : Mr.Sanjeev Chauhan
+                  <br>
+                  Contact No. : 0751 2920555, +91 9425114946, +919229222902
+                  <br>
+                  Fax No. : +91 7514066476, 4053850 | Toll Free : 1800-270-5155
+                  <br>
+                  Mail ID : <a target="_blank" href="mailto:sanjeev@vitm.edu.in" class="hover:text-blue-500">sanjeev@vitm.edu.in</a> | <a target="_blank" href="mailto:admissions@vitm.edu.in" class="hover:text-blue-500">admissions@vitm.edu.in</a>
+                </p>
+              </div>
+            </div>
+            <!-- GET IN TOUCH -->
+            <div class="max-w-lg space-y-4">
+              <h3 class="font-medium text-xl">Get in Touch</h3>
+              <!--CONTACT FORM -->
+              <form action="#" method="post" class="space-y-4">
+                <input type="text" placeholder="Full Name">
+                <input type="text" placeholder="Email">
+                <textarea placeholder="Type Your Message"></textarea>
+                <button type="submit" class="w-fit rounded-full text-white px-12 py-2 mx-auto text-center bg-blue-700 active:bg-blue-500">Send</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </main>
+      <!-- FOOTER -->
+      <footer class="bg-blue-950 text-white w-full p-4 text-center">
+        <p>
+          All Rights Reserved & &copy; Copyright:
+          <a class="text-blue-400 visited:text-purple-600 underline" href="https://www.linkedin.com/in/shyamgdev/"
+            target="_blank">Prashant Gupta</a>
+        </p>
+      </footer>
+
+      <!-- COURSE REGISTRATION MODAL -->
+      <div class="relative bg-white z-50 hidden" id="course-registration-modal">
+        <!-- OUTER MODAL FOR CLOSE THE MODAL -->
+        <div class="fixed min-w-full min-h-screen top-0 backdrop-blur-sm z-40" onclick="closeCourseRegistrationModal()">
+        </div>
+        <!-- INNER MODAL -->
+        <div class="fixed top-0 bottom-0 left-0 right-0 m-auto max-w-sm h-full sm:py-8 text-center rounded-lg z-50">
+          <!-- CLOSE MODAL BUTTON -->
+          <button class="absolute right-0 p-1 text-red-700 bg-red-200 rounded-lg"
+            onclick="closeCourseRegistrationModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <!-- INNER MODAL CONTAINER -->
+          <div
+            class="flex flex-col items-center justify-start bg-white p-4 space-y-2 w-full h-full rounded-lg shadow-xl hover:shadow-2xl">
+            <h1 class="font-bold text-blue-700" title>
+              BCA Registration Form
+            </h1>
+            <p class="text-sm text-blue-500">
+              In Case any query, Kindly Contact: 1234567890
+            </p>
+            <!-- REGISTRATION FORM -->
+            <form class="flex flex-col items-start text-start w-full max-w-sm px-4 space-y-2 overflow-y-scroll"
+              id="course_registration_form" action="#" method="post">
+              <!-- USERNAME -->
+              <div class="w-full">
+                <label>Username</label>
+                <br />
+                <input class="p-2 border-[1px] border-[#ced4da] rounded-lg" type="text" minlength="3" />
+              </div>
+              <!-- EMAIL -->
+              <div class="w-full">
+                <label>Email</label>
+                <br />
+                <input type="email" />
+              </div>
+              <!-- MOBILE NO. -->
+              <div class="w-full">
+                <label>Mobile No.</label>
+                <br />
+                <input type="number" min="10" max="10" />
+              </div>
+              <!-- D.O.B -->
+              <div class="w-full">
+                <label>D.O.B.</label>
+                <br />
+                <input type="date" class="bg-transparent" />
+              </div>
+              <!-- GENDER -->
+              <div class="mb-2">
+                <label>Gender</label>
+                <br />
+                <div class="flex flex-row space-x-2">
+                  <label class="flex flex-row items-center justify-center space-x-2 cursor-pointer">
+                    <input type="radio" name="gender" />
+                    <span>Male</span>
+                  </label>
+                  <label class="flex flex-row items-center justify-center space-x-2 cursor-pointer">
+                    <input type="radio" name="gender" />
+                    <span>Female</span>
+                  </label>
+                </div>
+              </div>
+              <!-- ADDRESS -->
+              <div class="w-full">
+                <label>Address</label>
+                <br />
+                <textarea class=""></textarea>
+              </div>
+              <!-- SELECT COLLAGE -->
+              <div class="w-full">
+                <label>Select Collage</label>
+                <br />
+                <select class="w-full bg-transparent">
+                  <option>Select</option>
+                  <option>MITS</option>
+                  <option>RJIT</option>
+                  <option>ITM</option>
+                  <option>NITM</option>
+                  <option>VITM</option>
+                </select>
+              </div>
+              <!-- SELECT COURSE -->
+              <div class="w-full mb-2">
+                <label>Select Course</label>
+                <br />
+                <!-- <select
+                    class="w-full p-2 border-[1px] border-[#ced4da] rounded-lg bg-transparent"
+                  >
+                    <option>BCA</option>
+                  </select> -->
+                <input type="text" readonly course class="bg-blue-200" />
+              </div>
+            </form>
+            <!-- FORM SUBMIT BUTTTON -->
+            <div class="w-full bg-blue-700 mt-8 py-2 text-xl text-white rounded-lg cursor-pointer">
+              <button type="button" form="course_registration_form">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // MAKING HEADER FIXED WHEN SCROLLING WINDOW
+    const header = document.querySelector("header");
+
+    // ONCLICK TOGGLE MOBILE MENU BUTTON
+    const toggleMobileMenuBtn = (e) => {
+      const toggleMobileMenu = document.querySelector("#toggle-mobile-menu");
+      const humburgerOpen = document.querySelector(".humburger .open");
+      const humburgerClose = document.querySelector(".humburger .close");
+      toggleMobileMenu.classList.toggle("hidden");
+      humburgerOpen.classList.toggle("hidden");
+      humburgerClose.classList.toggle("hidden");
+    };
+
+    // CAROUSEL
+    const slider = document.querySelector("#slider");
+    const slides = document.querySelectorAll(".slide");
+    let currentSlideIndex = 1;
+
+    const showSlide = () => {
+      if (currentSlideIndex > slides.length) {
+        currentSlideIndex = 1;
+      } else if (currentSlideIndex < 1) {
+        currentSlideIndex = slides.length;
+      }
+      for (let i = 0; i < slides.length; i++) {
+        if (currentSlideIndex === i + 1) {
+          slides[i].classList.remove("hidden");
+        } else {
+          slides[i].classList.add("hidden");
+        }
+      }
+      currentSlideIndex++;
+    };
+
+    const prevSlide = () => {
+      currentSlideIndex -= 2;
+      showSlide();
+    };
+
+    const nextSlide = () => {
+      showSlide();
+    };
+
+    setInterval(() => {
+      showSlide();
+    }, 2000);
+
+    // OPEN COURSE REGISTRATION MODAL
+    const openCourseRegistrationModal = (course) => {
+      document.querySelector("body").style.overflowY = "hidden";
+      const elem = document.querySelector("#course-registration-modal");
+      const titleElem = document.querySelector(
+        "#course-registration-modal [title]"
+      );
+      const courseElem = document.querySelector(
+        "#course-registration-modal [course]"
+      );
+      elem.classList.remove("hidden");
+      titleElem.innerText = `${course} Registration Form`;
+      courseElem.value = course;
+    };
+
+    // CLOSE COURSE REGISTRATION MODAL
+    const closeCourseRegistrationModal = () => {
+      document.querySelector("body").style.overflowY = "scroll";
+      const elem = document.querySelector("#course-registration-modal");
+      elem.classList.add("hidden");
+    };
+  </script>
+</body>
+
+</html>
