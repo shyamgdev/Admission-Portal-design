@@ -1,4 +1,4 @@
-# Admission Portal: Dashboard
+# Admission Portal App
 
 Demo: https://admission-portal-app.netlify.app/
 
